@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>保護者ログイン</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif; /* フォントの指定 */
+        }
+        .blue-box {
+            border: 2px solid #0067c0; /* 青い枠線 */
+            padding: 10px;         /* 内側の余白 */
+            display: inline-block; /* 要素の幅をテキストに合わせる */
+            border-radius: 5px;    /* 角を丸くする（オプション） */
+            font-size: 1.2em;        /* 文字サイズを設定 */
+        }
+        label {
+            display: block;         /* ラベルを縦に並べる */
+            margin: 10px 0 5px;     /* 上下に余白を設定 */
+            font-size: 1.2em;       /* ラベルの文字サイズを大きく */
+        }
+        input {
+            width: 250px;            /* 入力フォームの幅を広げる */
+            font-size: 1.2em;       /* 入力文字のサイズを大きく */
+            padding: 8px;          /* 入力欄の内側の余白を広げる */
+            margin-bottom: 15px;    /* 下部に余白を追加 */
+            border: 2px solid #ccc; /* 枠線を追加 */
+            border-radius: 5px;     /* 角を丸くする */
+        }
+        button {
+            font-size: 1.5em;       /* ボタン文字のサイズを大きく */
+            padding: 10px 20px;     /* ボタン全体の大きさを調整 */
+            border: none;           /* 枠線を消す */
+            border-radius: 5px;     /* ボタンの角を丸くする */
+            margin-left: 80px; 
+        }
+    </style>
+</head>
+<body>
+    <h1 class="blue-box">保護者ログイン/連携</h1>
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <form method="post">
+        {% csrf_token %}
+        <label for="userid">見守り対象のユーザーID:</label>
+        <input type="text" id="userid" name="userid" required>
+        <br>
+        <label for="password">パスワード:</label>
+        <input type="password" id="password" name="password" required>
+        <br>
+        <br>
+        <br>
+        <button type="submit">Login</button>
+    </form>
+</body>
+</html>
